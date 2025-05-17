@@ -1,5 +1,6 @@
 #include "global.h"
 #include "gflib.h"
+#include "m4a.h"
 #include "link.h"
 #include "link_rfu.h"
 #include "load_save.h"
@@ -15,6 +16,8 @@
 #include "scanline_effect.h"
 #include "save_failed_screen.h"
 #include "quest_log.h"
+#include "constants/songs.h"
+#include "constants/sound.h"
 
 extern u32 intr_main[];
 
@@ -75,6 +78,8 @@ static IntrFunc * const sTimerIntrFunc = gIntrTable + 0x7;
 
 EWRAM_DATA u8 gDecompressionBuffer[0x4000] = {0};
 EWRAM_DATA u16 gTrainerId = 0;
+// EWRAM_DATA u16 currentSong = MUS_GAME_FREAK;
+
 
 static void UpdateLinkAndCallCallbacks(void);
 static void InitMainCallbacks(void);
@@ -155,6 +160,8 @@ void AgbMain()
 
     gLinkTransferringData = FALSE;
 
+    gMain.currentSong = SE_USE_ITEM;
+
     for (;;)
     {
         ReadKeys();
@@ -190,8 +197,48 @@ void AgbMain()
         }
 
         PlayTimeCounter_Update();
-        MapMusicMain();
+        // MapMusicMain();
         WaitForVBlank();
+    }
+}
+
+#define WAIT_FRAMES 120
+
+void CB_PlayAllSongs(void)
+{
+    const struct MusicPlayer *mplayTable = gMPlayTable;
+    const struct Song *songTable = gSongTable;
+    const struct Song *song = &songTable[gMain.currentSong];
+    const struct MusicPlayer *mplay = &mplayTable[song->ms];
+    struct MusicPlayerInfo *mplayInfo = mplay->info;
+    // struct SongHeader *songHeader = song->header;
+
+    switch (gMain.state)
+    {
+    default:
+        if (gMain.state < WAIT_FRAMES)
+        {
+            ++gMain.state;
+        }
+        break;
+    case WAIT_FRAMES:
+        m4aSongNumStart(gMain.currentSong);
+        ++gMain.state;
+        break;
+    case WAIT_FRAMES + 1:
+        if (mplayInfo->status & MUSICPLAYER_STATUS_PAUSE)
+        {
+            if (gMain.currentSong < MUS_TEACHY_TV_MENU)
+            {
+                ++gMain.currentSong;
+                gMain.state = 0;
+            }
+            else
+            {
+                ++gMain.state;
+            }
+        }
+        break;
     }
 }
 
@@ -206,7 +253,8 @@ static void InitMainCallbacks(void)
     gMain.vblankCounter1 = 0;
     gMain.vblankCounter2 = 0;
     gMain.callback1 = NULL;
-    SetMainCallback2(CB2_InitCopyrightScreenAfterBootup);
+    // SetMainCallback2(CB2_InitCopyrightScreenAfterBootup);
+    SetMainCallback2(CB_PlayAllSongs);
     gSaveBlock2Ptr = &gSaveBlock2;
     gSaveBlock1Ptr = &gSaveBlock1;
     gSaveBlock2.encryptionKey = 0;
