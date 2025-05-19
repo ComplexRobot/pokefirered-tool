@@ -44,6 +44,8 @@ struct Main
     /*0x439*/ u8 field_439_x4:1;
 
     u16 currentSong;
+    u32 songPlayTime;
+    u8 accumulator;
 };
 
 extern struct Main gMain;

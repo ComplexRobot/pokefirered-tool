@@ -49,7 +49,7 @@
 	.equ	W96,	W00+48		@
 
 	.equ	FINE,	0xb1		@ fine
-	.equ	GOTO,	0xb1		@ goto
+	.equ	GOTO,	0xb2		@ goto
 	.equ	PATT,	0xb3		@ pattern play
 	.equ	PEND,	0xb4		@ pattern end
 	.equ	REPT,	0xb5		@ repeat

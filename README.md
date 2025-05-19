@@ -1,3 +1,10 @@
+Custom build that plays all music and sound effects in sequence. 
+Looping sounds play for 2 more seconds after the loop starts (uses previously mined metadata for the correct timing).
+
+Used in a custom build of [NanoBoyAdvance](https://github.com/ComplexRobot/NanoBoyAdvance/tree/audio-extract) to render and extract the sounds.
+
+Sound output files [here](https://github.com/ComplexRobot/pokefirered-sound-rip).
+
 # Pokémon FireRed and LeafGreen
 
 This is a decompilation of English Pokémon FireRed and LeafGreen.

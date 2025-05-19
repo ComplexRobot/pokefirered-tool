@@ -202,6 +202,2103 @@ void AgbMain()
     }
 }
 
+const struct
+{
+    u8 tempo;
+    u32 duration;
+    u8 looping;
+} musicData[] =
+{
+    // Used regex on song-data.csv (convert to all  uppercase first):
+    // Find:
+    // ^[^,]+,([^,]+),([^,]+),([^,]+),([^,]+),[^,]+,[^,]+$
+    // Replacement:
+    //     [\1] =\n    {\n        .tempo = \2,\n        .duration = \3 * 80,\n        .looping = \4,\n    },
+    //
+    [MUS_BERRY_PICK] =
+    {
+        .tempo = 74,
+        .duration = 2520 * 80,
+        .looping = TRUE,
+    },
+    [MUS_CAUGHT] =
+    {
+        .tempo = 70,
+        .duration = 780 * 80,
+        .looping = TRUE,
+    },
+    [MUS_CAUGHT_INTRO] =
+    {
+        .tempo = 68,
+        .duration = 180 * 80,
+        .looping = FALSE,
+    },
+    [MUS_CELADON] =
+    {
+        .tempo = 55,
+        .duration = 1728 * 80,
+        .looping = TRUE,
+    },
+    [MUS_CINNABAR] =
+    {
+        .tempo = 60,
+        .duration = 1728 * 80,
+        .looping = TRUE,
+    },
+    [MUS_CREDITS] =
+    {
+        .tempo = 65,
+        .duration = 11664 * 80,
+        .looping = FALSE,
+    },
+    [MUS_CYCLING] =
+    {
+        .tempo = 67,
+        .duration = 1836 * 80,
+        .looping = TRUE,
+    },
+    [MUS_DEX_RATING] =
+    {
+        .tempo = 37,
+        .duration = 96 * 80,
+        .looping = FALSE,
+    },
+    [MUS_DUMMY] =
+    {
+        .tempo = -1,
+        .duration = 0 * 80,
+        .looping = FALSE,
+    },
+    [MUS_ENCOUNTER_BOY] =
+    {
+        .tempo = 77,
+        .duration = 576 * 80,
+        .looping = TRUE,
+    },
+    [MUS_ENCOUNTER_DEOXYS] =
+    {
+        .tempo = 64,
+        .duration = 768 * 80,
+        .looping = TRUE,
+    },
+    [MUS_ENCOUNTER_GIRL] =
+    {
+        .tempo = 87,
+        .duration = 468 * 80,
+        .looping = TRUE,
+    },
+    [MUS_ENCOUNTER_GYM_LEADER] =
+    {
+        .tempo = 82,
+        .duration = 576 * 80,
+        .looping = TRUE,
+    },
+    [MUS_ENCOUNTER_RIVAL] =
+    {
+        .tempo = 84,
+        .duration = 1344 * 80,
+        .looping = TRUE,
+    },
+    [MUS_ENCOUNTER_ROCKET] =
+    {
+        .tempo = 73,
+        .duration = 504 * 80,
+        .looping = TRUE,
+    },
+    [MUS_EVOLUTION] =
+    {
+        .tempo = 60,
+        .duration = 1536 * 80,
+        .looping = TRUE,
+    },
+    [MUS_EVOLUTION_INTRO] =
+    {
+        .tempo = 60,
+        .duration = 48 * 80,
+        .looping = FALSE,
+    },
+    [MUS_EVOLVED] =
+    {
+        .tempo = 75,
+        .duration = 228 * 80,
+        .looping = FALSE,
+    },
+    [MUS_FOLLOW_ME] =
+    {
+        .tempo = 73,
+        .duration = 960 * 80,
+        .looping = TRUE,
+    },
+    [MUS_FUCHSIA] =
+    {
+        .tempo = 60,
+        .duration = 1632 * 80,
+        .looping = TRUE,
+    },
+    [MUS_GAME_CORNER] =
+    {
+        .tempo = 73,
+        .duration = 2520 * 80,
+        .looping = TRUE,
+    },
+    [MUS_GAME_FREAK] =
+    {
+        .tempo = 75,
+        .duration = 522 * 80,
+        .looping = FALSE,
+    },
+    [MUS_GYM] =
+    {
+        .tempo = 64,
+        .duration = 1728 * 80,
+        .looping = TRUE,
+    },
+    [MUS_HALL_OF_FAME] =
+    {
+        .tempo = 76,
+        .duration = 1728 * 80,
+        .looping = TRUE,
+    },
+    [MUS_HEAL] =
+    {
+        .tempo = 66,
+        .duration = 120 * 80,
+        .looping = FALSE,
+    },
+    [MUS_HEAL_UNUSED] =
+    {
+        .tempo = 73,
+        .duration = 120 * 80,
+        .looping = FALSE,
+    },
+    [MUS_INTRO_FIGHT] =
+    {
+        .tempo = 94,
+        .duration = 912 * 80,
+        .looping = FALSE,
+    },
+    [MUS_JIGGLYPUFF] =
+    {
+        .tempo = 73,
+        .duration = 384 * 80,
+        .looping = FALSE,
+    },
+    [MUS_LAVENDER] =
+    {
+        .tempo = 64,
+        .duration = 4224 * 80,
+        .looping = TRUE,
+    },
+    [MUS_LEVEL_UP] =
+    {
+        .tempo = 87,
+        .duration = 72 * 80,
+        .looping = FALSE,
+    },
+    [MUS_MOVE_DELETED] =
+    {
+        .tempo = 75,
+        .duration = 156 * 80,
+        .looping = FALSE,
+    },
+    [MUS_MT_MOON] =
+    {
+        .tempo = 55,
+        .duration = 3900 * 80,
+        .looping = TRUE,
+    },
+    [MUS_MYSTERY_GIFT] =
+    {
+        .tempo = 62,
+        .duration = 864 * 80,
+        .looping = TRUE,
+    },
+    [MUS_NET_CENTER] =
+    {
+        .tempo = 57,
+        .duration = 1536 * 80,
+        .looping = TRUE,
+    },
+    [MUS_NEW_GAME_EXIT] =
+    {
+        .tempo = 60,
+        .duration = 96 * 80,
+        .looping = FALSE,
+    },
+    [MUS_NEW_GAME_INSTRUCT] =
+    {
+        .tempo = 60,
+        .duration = 396 * 80,
+        .looping = TRUE,
+    },
+    [MUS_NEW_GAME_INTRO] =
+    {
+        .tempo = 60,
+        .duration = 576 * 80,
+        .looping = TRUE,
+    },
+    [MUS_OAK] =
+    {
+        .tempo = 80,
+        .duration = 1632 * 80,
+        .looping = TRUE,
+    },
+    [MUS_OAK_LAB] =
+    {
+        .tempo = 60,
+        .duration = 816 * 80,
+        .looping = TRUE,
+    },
+    [MUS_OBTAIN_BADGE] =
+    {
+        .tempo = 72,
+        .duration = 300 * 80,
+        .looping = FALSE,
+    },
+    [MUS_OBTAIN_BERRY] =
+    {
+        .tempo = 70,
+        .duration = 108 * 80,
+        .looping = FALSE,
+    },
+    [MUS_OBTAIN_ITEM] =
+    {
+        .tempo = 95,
+        .duration = 180 * 80,
+        .looping = FALSE,
+    },
+    [MUS_OBTAIN_KEY_ITEM] =
+    {
+        .tempo = 36,
+        .duration = 72 * 80,
+        .looping = FALSE,
+    },
+    [MUS_OBTAIN_TMHM] =
+    {
+        .tempo = 70,
+        .duration = 180 * 80,
+        .looping = FALSE,
+    },
+    [MUS_PALLET] =
+    {
+        .tempo = 44,
+        .duration = 1536 * 80,
+        .looping = TRUE,
+    },
+    [MUS_PEWTER] =
+    {
+        .tempo = 63,
+        .duration = 3096 * 80,
+        .looping = TRUE,
+    },
+    [MUS_PHOTO] =
+    {
+        .tempo = 96,
+        .duration = 96 * 80,
+        .looping = FALSE,
+    },
+    [MUS_POKE_CENTER] =
+    {
+        .tempo = 58,
+        .duration = 1536 * 80,
+        .looping = TRUE,
+    },
+    [MUS_POKE_FLUTE] =
+    {
+        .tempo = 40,
+        .duration = 1632 * 80,
+        .looping = FALSE,
+    },
+    [MUS_POKE_JUMP] =
+    {
+        .tempo = 69,
+        .duration = 2520 * 80,
+        .looping = TRUE,
+    },
+    [MUS_POKE_MANSION] =
+    {
+        .tempo = 66,
+        .duration = 3456 * 80,
+        .looping = TRUE,
+    },
+    [MUS_POKE_TOWER] =
+    {
+        .tempo = 67,
+        .duration = 3168 * 80,
+        .looping = TRUE,
+    },
+    [MUS_RIVAL_EXIT] =
+    {
+        .tempo = 84,
+        .duration = 1248 * 80,
+        .looping = TRUE,
+    },
+    [MUS_ROCKET_HIDEOUT] =
+    {
+        .tempo = 65,
+        .duration = 3840 * 80,
+        .looping = TRUE,
+    },
+    [MUS_ROUTE1] =
+    {
+        .tempo = 58,
+        .duration = 1164 * 80,
+        .looping = TRUE,
+    },
+    [MUS_ROUTE11] =
+    {
+        .tempo = 62,
+        .duration = 1728 * 80,
+        .looping = TRUE,
+    },
+    [MUS_ROUTE24] =
+    {
+        .tempo = 59,
+        .duration = 984 * 80,
+        .looping = TRUE,
+    },
+    [MUS_ROUTE3] =
+    {
+        .tempo = 62,
+        .duration = 1788 * 80,
+        .looping = TRUE,
+    },
+    [MUS_RS_VS_GYM_LEADER] =
+    {
+        .tempo = 98,
+        .duration = 5952 * 80,
+        .looping = TRUE,
+    },
+    [MUS_RS_VS_TRAINER] =
+    {
+        .tempo = 99,
+        .duration = 7104 * 80,
+        .looping = TRUE,
+    },
+    [MUS_SCHOOL] =
+    {
+        .tempo = 58,
+        .duration = 1728 * 80,
+        .looping = TRUE,
+    },
+    [MUS_SEVII_123] =
+    {
+        .tempo = 63,
+        .duration = 3096 * 80,
+        .looping = TRUE,
+    },
+    [MUS_SEVII_45] =
+    {
+        .tempo = 60,
+        .duration = 2508 * 80,
+        .looping = TRUE,
+    },
+    [MUS_SEVII_67] =
+    {
+        .tempo = 58,
+        .duration = 2016 * 80,
+        .looping = TRUE,
+    },
+    [MUS_SEVII_CAVE] =
+    {
+        .tempo = 55,
+        .duration = 3900 * 80,
+        .looping = TRUE,
+    },
+    [MUS_SEVII_DUNGEON] =
+    {
+        .tempo = 64,
+        .duration = 5388 * 80,
+        .looping = TRUE,
+    },
+    [MUS_SEVII_ROUTE] =
+    {
+        .tempo = 62,
+        .duration = 1848 * 80,
+        .looping = TRUE,
+    },
+    [MUS_SILPH] =
+    {
+        .tempo = 57,
+        .duration = 3336 * 80,
+        .looping = TRUE,
+    },
+    [MUS_SLOTS_JACKPOT] =
+    {
+        .tempo = 72,
+        .duration = 252 * 80,
+        .looping = FALSE,
+    },
+    [MUS_SLOTS_WIN] =
+    {
+        .tempo = 72,
+        .duration = 144 * 80,
+        .looping = FALSE,
+    },
+    [MUS_SLOW_PALLET] =
+    {
+        .tempo = 36,
+        .duration = 1536 * 80,
+        .looping = TRUE,
+    },
+    [MUS_SS_ANNE] =
+    {
+        .tempo = 57,
+        .duration = 3264 * 80,
+        .looping = TRUE,
+    },
+    [MUS_SURF] =
+    {
+        .tempo = 50,
+        .duration = 1296 * 80,
+        .looping = TRUE,
+    },
+    [MUS_TEACHY_TV_MENU] =
+    {
+        .tempo = 72,
+        .duration = 216 * 80,
+        .looping = TRUE,
+    },
+    [MUS_TEACHY_TV_SHOW] =
+    {
+        .tempo = 73,
+        .duration = 960 * 80,
+        .looping = TRUE,
+    },
+    [MUS_TITLE] =
+    {
+        .tempo = 70,
+        .duration = 2520 * 80,
+        .looping = TRUE,
+    },
+    [MUS_TOO_BAD] =
+    {
+        .tempo = 90,
+        .duration = 168 * 80,
+        .looping = FALSE,
+    },
+    [MUS_TRAINER_TOWER] =
+    {
+        .tempo = 64,
+        .duration = 1728 * 80,
+        .looping = TRUE,
+    },
+    [MUS_UNION_ROOM] =
+    {
+        .tempo = 67,
+        .duration = 2520 * 80,
+        .looping = TRUE,
+    },
+    [MUS_VERMILLION] =
+    {
+        .tempo = 58,
+        .duration = 1728 * 80,
+        .looping = TRUE,
+    },
+    [MUS_VICTORY_GYM_LEADER] =
+    {
+        .tempo = 69,
+        .duration = 2649 * 80,
+        .looping = TRUE,
+    },
+    [MUS_VICTORY_ROAD] =
+    {
+        .tempo = 68,
+        .duration = 1752 * 80,
+        .looping = TRUE,
+    },
+    [MUS_VICTORY_TRAINER] =
+    {
+        .tempo = 68,
+        .duration = 880 * 80,
+        .looping = TRUE,
+    },
+    [MUS_VICTORY_WILD] =
+    {
+        .tempo = 70,
+        .duration = 873 * 80,
+        .looping = TRUE,
+    },
+    [MUS_VIRIDIAN_FOREST] =
+    {
+        .tempo = 64,
+        .duration = 5388 * 80,
+        .looping = TRUE,
+    },
+    [MUS_VS_CHAMPION] =
+    {
+        .tempo = 86,
+        .duration = 5088 * 80,
+        .looping = TRUE,
+    },
+    [MUS_VS_DEOXYS] =
+    {
+        .tempo = 81,
+        .duration = 5184 * 80,
+        .looping = TRUE,
+    },
+    [MUS_VS_GYM_LEADER] =
+    {
+        .tempo = 93,
+        .duration = 4224 * 80,
+        .looping = TRUE,
+    },
+    [MUS_VS_LEGEND] =
+    {
+        .tempo = 91,
+        .duration = 3264 * 80,
+        .looping = TRUE,
+    },
+    [MUS_VS_MEWTWO] =
+    {
+        .tempo = 91,
+        .duration = 3264 * 80,
+        .looping = TRUE,
+    },
+    [MUS_VS_TRAINER] =
+    {
+        .tempo = 86,
+        .duration = 7008 * 80,
+        .looping = TRUE,
+    },
+    [MUS_VS_WILD] =
+    {
+        .tempo = 91,
+        .duration = 3264 * 80,
+        .looping = TRUE,
+    },
+    [SE_APPLAUSE] =
+    {
+        .tempo = 75,
+        .duration = 288 * 80,
+        .looping = FALSE,
+    },
+    [SE_BALL] =
+    {
+        .tempo = 64,
+        .duration = 6 * 80,
+        .looping = FALSE,
+    },
+    [SE_BALLOON_BLUE] =
+    {
+        .tempo = 120,
+        .duration = 18 * 80,
+        .looping = FALSE,
+    },
+    [SE_BALLOON_RED] =
+    {
+        .tempo = 120,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_BALLOON_YELLOW] =
+    {
+        .tempo = 120,
+        .duration = 18 * 80,
+        .looping = FALSE,
+    },
+    [SE_BALL_BOUNCE_1] =
+    {
+        .tempo = 75,
+        .duration = 12 * 80,
+        .looping = FALSE,
+    },
+    [SE_BALL_BOUNCE_2] =
+    {
+        .tempo = 75,
+        .duration = 12 * 80,
+        .looping = FALSE,
+    },
+    [SE_BALL_BOUNCE_3] =
+    {
+        .tempo = 75,
+        .duration = 12 * 80,
+        .looping = FALSE,
+    },
+    [SE_BALL_BOUNCE_4] =
+    {
+        .tempo = 75,
+        .duration = 12 * 80,
+        .looping = FALSE,
+    },
+    [SE_BALL_OPEN] =
+    {
+        .tempo = 45,
+        .duration = 15 * 80,
+        .looping = FALSE,
+    },
+    [SE_BALL_THROW] =
+    {
+        .tempo = 75,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_BALL_TRADE] =
+    {
+        .tempo = -1,
+        .duration = 12 * 80,
+        .looping = FALSE,
+    },
+    [SE_BALL_TRAY_BALL] =
+    {
+        .tempo = 75,
+        .duration = 6 * 80,
+        .looping = FALSE,
+    },
+    [SE_BALL_TRAY_ENTER] =
+    {
+        .tempo = 75,
+        .duration = 12 * 80,
+        .looping = FALSE,
+    },
+    [SE_BALL_TRAY_EXIT] =
+    {
+        .tempo = 75,
+        .duration = 3 * 80,
+        .looping = FALSE,
+    },
+    [SE_BANG] =
+    {
+        .tempo = 120,
+        .duration = 72 * 80,
+        .looping = FALSE,
+    },
+    [SE_BERRY_BLENDER] =
+    {
+        .tempo = 75,
+        .duration = 240 * 80,
+        .looping = TRUE,
+    },
+    [SE_BIKE_BELL] =
+    {
+        .tempo = 60,
+        .duration = 96 * 80,
+        .looping = FALSE,
+    },
+    [SE_BIKE_HOP] =
+    {
+        .tempo = 90,
+        .duration = 6 * 80,
+        .looping = FALSE,
+    },
+    [SE_BOO] =
+    {
+        .tempo = 50,
+        .duration = 12 * 80,
+        .looping = FALSE,
+    },
+    [SE_BREAKABLE_DOOR] =
+    {
+        .tempo = 120,
+        .duration = 30 * 80,
+        .looping = FALSE,
+    },
+    [SE_BRIDGE_WALK] =
+    {
+        .tempo = 75,
+        .duration = 9 * 80,
+        .looping = FALSE,
+    },
+    [SE_CLICK] =
+    {
+        .tempo = 75,
+        .duration = 9 * 80,
+        .looping = FALSE,
+    },
+    [SE_CONTEST_CONDITION_LOSE] =
+    {
+        .tempo = 75,
+        .duration = 9 * 80,
+        .looping = FALSE,
+    },
+    [SE_CONTEST_CURTAIN_FALL] =
+    {
+        .tempo = 75,
+        .duration = 12 * 80,
+        .looping = FALSE,
+    },
+    [SE_CONTEST_CURTAIN_RISE] =
+    {
+        .tempo = 75,
+        .duration = 12 * 80,
+        .looping = FALSE,
+    },
+    [SE_CONTEST_HEART] =
+    {
+        .tempo = 75,
+        .duration = 12 * 80,
+        .looping = FALSE,
+    },
+    [SE_CONTEST_ICON_CHANGE] =
+    {
+        .tempo = 75,
+        .duration = 6 * 80,
+        .looping = FALSE,
+    },
+    [SE_CONTEST_ICON_CLEAR] =
+    {
+        .tempo = 75,
+        .duration = 6 * 80,
+        .looping = FALSE,
+    },
+    [SE_CONTEST_MONS_TURN] =
+    {
+        .tempo = 75,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_CONTEST_PLACE] =
+    {
+        .tempo = 72,
+        .duration = 36 * 80,
+        .looping = FALSE,
+    },
+    [SE_DEX_SEARCH] =
+    {
+        .tempo = 72,
+        .duration = 72 * 80,
+        .looping = FALSE,
+    },
+    [SE_DING_DONG] =
+    {
+        .tempo = 75,
+        .duration = 63 * 80,
+        .looping = FALSE,
+    },
+    [SE_DOOR] =
+    {
+        .tempo = 55,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_DOWNPOUR] =
+    {
+        .tempo = 110,
+        .duration = 60 * 80,
+        .looping = TRUE,
+    },
+    [SE_DOWNPOUR_STOP] =
+    {
+        .tempo = 110,
+        .duration = 48 * 80,
+        .looping = FALSE,
+    },
+    [SE_EFFECTIVE] =
+    {
+        .tempo = 45,
+        .duration = 42 * 80,
+        .looping = FALSE,
+    },
+    [SE_EGG_HATCH] =
+    {
+        .tempo = 75,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_ELEVATOR] =
+    {
+        .tempo = 75,
+        .duration = 216 * 80,
+        .looping = FALSE,
+    },
+    [SE_ESCALATOR] =
+    {
+        .tempo = 75,
+        .duration = 120 * 80,
+        .looping = FALSE,
+    },
+    [SE_EXIT] =
+    {
+        .tempo = 60,
+        .duration = 30 * 80,
+        .looping = FALSE,
+    },
+    [SE_EXP] =
+    {
+        .tempo = 120,
+        .duration = 156 * 80,
+        .looping = FALSE,
+    },
+    [SE_EXP_MAX] =
+    {
+        .tempo = 75,
+        .duration = 18 * 80,
+        .looping = FALSE,
+    },
+    [SE_FAILURE] =
+    {
+        .tempo = 120,
+        .duration = 33 * 80,
+        .looping = FALSE,
+    },
+    [SE_FAINT] =
+    {
+        .tempo = 45,
+        .duration = 30 * 80,
+        .looping = FALSE,
+    },
+    [SE_FALL] =
+    {
+        .tempo = 85,
+        .duration = 48 * 80,
+        .looping = FALSE,
+    },
+    [SE_FIELD_POISON] =
+    {
+        .tempo = 75,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_FLEE] =
+    {
+        .tempo = 75,
+        .duration = 39 * 80,
+        .looping = FALSE,
+    },
+    [SE_FU_ZAKU] =
+    {
+        .tempo = 75,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_GLASS_FLUTE] =
+    {
+        .tempo = 60,
+        .duration = 18 * 80,
+        .looping = FALSE,
+    },
+    [SE_ICE_BREAK] =
+    {
+        .tempo = 60,
+        .duration = 15 * 80,
+        .looping = FALSE,
+    },
+    [SE_ICE_CRACK] =
+    {
+        .tempo = 75,
+        .duration = 9 * 80,
+        .looping = FALSE,
+    },
+    [SE_ICE_STAIRS] =
+    {
+        .tempo = 75,
+        .duration = 18 * 80,
+        .looping = FALSE,
+    },
+    [SE_INTRO_BLAST] =
+    {
+        .tempo = 55,
+        .duration = 132 * 80,
+        .looping = FALSE,
+    },
+    [SE_ITEMFINDER] =
+    {
+        .tempo = 64,
+        .duration = 30 * 80,
+        .looping = FALSE,
+    },
+    [SE_LAVARIDGE_FALL_WARP] =
+    {
+        .tempo = 60,
+        .duration = 54 * 80,
+        .looping = FALSE,
+    },
+    [SE_LEDGE] =
+    {
+        .tempo = 60,
+        .duration = 9 * 80,
+        .looping = FALSE,
+    },
+    [SE_LOW_HEALTH] =
+    {
+        .tempo = 75,
+        .duration = 36 * 80,
+        .looping = TRUE,
+    },
+    [SE_MUD_BALL] =
+    {
+        .tempo = 75,
+        .duration = 9 * 80,
+        .looping = FALSE,
+    },
+    [SE_MUGSHOT] =
+    {
+        .tempo = 55,
+        .duration = 108 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_BIND] =
+    {
+        .tempo = 75,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_COMET_PUNCH] =
+    {
+        .tempo = 75,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_CUT] =
+    {
+        .tempo = 110,
+        .duration = 48 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_DOUBLE_SLAP] =
+    {
+        .tempo = 75,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_FIRE_PUNCH] =
+    {
+        .tempo = 110,
+        .duration = 72 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_FLY] =
+    {
+        .tempo = 110,
+        .duration = 48 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_GUST] =
+    {
+        .tempo = 75,
+        .duration = 72 * 80,
+        .looping = TRUE,
+    },
+    [SE_M_GUST2] =
+    {
+        .tempo = 75,
+        .duration = 48 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_HEADBUTT] =
+    {
+        .tempo = 75,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_HORN_ATTACK] =
+    {
+        .tempo = 75,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_JUMP_KICK] =
+    {
+        .tempo = 90,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_LEER] =
+    {
+        .tempo = 75,
+        .duration = 60 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_MEGA_KICK] =
+    {
+        .tempo = 75,
+        .duration = 72 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_MEGA_KICK2] =
+    {
+        .tempo = 110,
+        .duration = 48 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_PAY_DAY] =
+    {
+        .tempo = 75,
+        .duration = 36 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_RAZOR_WIND] =
+    {
+        .tempo = 110,
+        .duration = 48 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_RAZOR_WIND2] =
+    {
+        .tempo = 125,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_SAND_ATTACK] =
+    {
+        .tempo = 75,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_SCRATCH] =
+    {
+        .tempo = 110,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_SWORDS_DANCE] =
+    {
+        .tempo = 75,
+        .duration = 60 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_TAIL_WHIP] =
+    {
+        .tempo = 75,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_TAKE_DOWN] =
+    {
+        .tempo = 75,
+        .duration = 48 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_VICEGRIP] =
+    {
+        .tempo = 110,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_WING_ATTACK] =
+    {
+        .tempo = 110,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_NOTE_A] =
+    {
+        .tempo = 75,
+        .duration = 18 * 80,
+        .looping = FALSE,
+    },
+    [SE_NOTE_B] =
+    {
+        .tempo = 75,
+        .duration = 18 * 80,
+        .looping = FALSE,
+    },
+    [SE_NOTE_C] =
+    {
+        .tempo = 75,
+        .duration = 18 * 80,
+        .looping = FALSE,
+    },
+    [SE_NOTE_C_HIGH] =
+    {
+        .tempo = 75,
+        .duration = 18 * 80,
+        .looping = FALSE,
+    },
+    [SE_NOTE_D] =
+    {
+        .tempo = 75,
+        .duration = 18 * 80,
+        .looping = FALSE,
+    },
+    [SE_NOTE_E] =
+    {
+        .tempo = 75,
+        .duration = 18 * 80,
+        .looping = FALSE,
+    },
+    [SE_NOTE_F] =
+    {
+        .tempo = 75,
+        .duration = 18 * 80,
+        .looping = FALSE,
+    },
+    [SE_NOTE_G] =
+    {
+        .tempo = 75,
+        .duration = 18 * 80,
+        .looping = FALSE,
+    },
+    [SE_NOT_EFFECTIVE] =
+    {
+        .tempo = 45,
+        .duration = 9 * 80,
+        .looping = FALSE,
+    },
+    [SE_ORB] =
+    {
+        .tempo = 55,
+        .duration = 162 * 80,
+        .looping = FALSE,
+    },
+    [SE_PC_LOGIN] =
+    {
+        .tempo = 72,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_PC_OFF] =
+    {
+        .tempo = 60,
+        .duration = 18 * 80,
+        .looping = FALSE,
+    },
+    [SE_PC_ON] =
+    {
+        .tempo = 72,
+        .duration = 57 * 80,
+        .looping = FALSE,
+    },
+    [SE_PIN] =
+    {
+        .tempo = 50,
+        .duration = 15 * 80,
+        .looping = FALSE,
+    },
+    [SE_POKENAV_OFF] =
+    {
+        .tempo = 72,
+        .duration = 18 * 80,
+        .looping = FALSE,
+    },
+    [SE_POKENAV_ON] =
+    {
+        .tempo = 72,
+        .duration = 18 * 80,
+        .looping = FALSE,
+    },
+    [SE_PUDDLE] =
+    {
+        .tempo = 75,
+        .duration = 12 * 80,
+        .looping = FALSE,
+    },
+    [SE_RAIN] =
+    {
+        .tempo = 110,
+        .duration = 84 * 80,
+        .looping = TRUE,
+    },
+    [SE_RAIN_STOP] =
+    {
+        .tempo = 110,
+        .duration = 48 * 80,
+        .looping = FALSE,
+    },
+    [SE_REPEL] =
+    {
+        .tempo = 110,
+        .duration = 36 * 80,
+        .looping = FALSE,
+    },
+    [SE_ROTATING_GATE] =
+    {
+        .tempo = 110,
+        .duration = 30 * 80,
+        .looping = FALSE,
+    },
+    [SE_ROULETTE_BALL] =
+    {
+        .tempo = 75,
+        .duration = 480 * 80,
+        .looping = FALSE,
+    },
+    [SE_ROULETTE_BALL2] =
+    {
+        .tempo = 75,
+        .duration = 72 * 80,
+        .looping = FALSE,
+    },
+    [SE_RS_DOOR] =
+    {
+        .tempo = 55,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_RS_SHOP] =
+    {
+        .tempo = 64,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_SAVE] =
+    {
+        .tempo = 75,
+        .duration = 42 * 80,
+        .looping = FALSE,
+    },
+    [SE_SELECT] =
+    {
+        .tempo = 150,
+        .duration = 18 * 80,
+        .looping = FALSE,
+    },
+    [SE_SHINY] =
+    {
+        .tempo = 110,
+        .duration = 48 * 80,
+        .looping = FALSE,
+    },
+    [SE_SHIP] =
+    {
+        .tempo = 110,
+        .duration = 168 * 80,
+        .looping = FALSE,
+    },
+    [SE_SLIDING_DOOR] =
+    {
+        .tempo = 60,
+        .duration = 12 * 80,
+        .looping = FALSE,
+    },
+    [SE_SUCCESS] =
+    {
+        .tempo = 120,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_SUPER_EFFECTIVE] =
+    {
+        .tempo = 45,
+        .duration = 51 * 80,
+        .looping = FALSE,
+    },
+    [SE_SWITCH] =
+    {
+        .tempo = 75,
+        .duration = 9 * 80,
+        .looping = FALSE,
+    },
+    [SE_TAILLOW_WING_FLAP] =
+    {
+        .tempo = 110,
+        .duration = 48 * 80,
+        .looping = TRUE,
+    },
+    [SE_THUNDER] =
+    {
+        .tempo = 110,
+        .duration = 144 * 80,
+        .looping = FALSE,
+    },
+    [SE_THUNDER2] =
+    {
+        .tempo = 110,
+        .duration = 120 * 80,
+        .looping = FALSE,
+    },
+    [SE_THUNDERSTORM] =
+    {
+        .tempo = 110,
+        .duration = 84 * 80,
+        .looping = TRUE,
+    },
+    [SE_THUNDERSTORM_STOP] =
+    {
+        .tempo = 110,
+        .duration = 48 * 80,
+        .looping = FALSE,
+    },
+    [SE_TRUCK_DOOR] =
+    {
+        .tempo = 75,
+        .duration = 12 * 80,
+        .looping = FALSE,
+    },
+    [SE_TRUCK_MOVE] =
+    {
+        .tempo = 75,
+        .duration = 384 * 80,
+        .looping = TRUE,
+    },
+    [SE_TRUCK_STOP] =
+    {
+        .tempo = 75,
+        .duration = 144 * 80,
+        .looping = FALSE,
+    },
+    [SE_TRUCK_UNLOAD] =
+    {
+        .tempo = 75,
+        .duration = 27 * 80,
+        .looping = FALSE,
+    },
+    [SE_UNLOCK] =
+    {
+        .tempo = 75,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_USE_ITEM] =
+    {
+        .tempo = 66,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_VEND] =
+    {
+        .tempo = 75,
+        .duration = 12 * 80,
+        .looping = FALSE,
+    },
+    [SE_WARP_IN] =
+    {
+        .tempo = 55,
+        .duration = 33 * 80,
+        .looping = FALSE,
+    },
+    [SE_WARP_OUT] =
+    {
+        .tempo = 55,
+        .duration = 36 * 80,
+        .looping = FALSE,
+    },
+    [SE_BAG_CURSOR] =
+    {
+        .tempo = 155,
+        .duration = 9 * 80,
+        .looping = FALSE,
+    },
+    [SE_BAG_POCKET] =
+    {
+        .tempo = 211,
+        .duration = 6 * 80,
+        .looping = FALSE,
+    },
+    [SE_BALL_CLICK] =
+    {
+        .tempo = 155,
+        .duration = 21 * 80,
+        .looping = FALSE,
+    },
+    [SE_CARD_FLIP] =
+    {
+        .tempo = 91,
+        .duration = 48 * 80,
+        .looping = FALSE,
+    },
+    [SE_CARD_FLIPPING] =
+    {
+        .tempo = 91,
+        .duration = 120 * 80,
+        .looping = FALSE,
+    },
+    [SE_CARD_OPEN] =
+    {
+        .tempo = 87,
+        .duration = 120 * 80,
+        .looping = FALSE,
+    },
+    [SE_DEOXYS_MOVE] =
+    {
+        .tempo = 131,
+        .duration = 192 * 80,
+        .looping = FALSE,
+    },
+    [SE_DEX_PAGE] =
+    {
+        .tempo = 50,
+        .duration = 9 * 80,
+        .looping = FALSE,
+    },
+    [SE_DEX_SCROLL] =
+    {
+        .tempo = 50,
+        .duration = 3 * 80,
+        .looping = FALSE,
+    },
+    [SE_HELP_CLOSE] =
+    {
+        .tempo = 210,
+        .duration = 96 * 80,
+        .looping = FALSE,
+    },
+    [SE_HELP_ERROR] =
+    {
+        .tempo = 210,
+        .duration = 48 * 80,
+        .looping = FALSE,
+    },
+    [SE_HELP_OPEN] =
+    {
+        .tempo = 210,
+        .duration = 96 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_ABSORB] =
+    {
+        .tempo = 75,
+        .duration = 12 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_ABSORB_2] =
+    {
+        .tempo = 75,
+        .duration = 51 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_ACID_ARMOR] =
+    {
+        .tempo = 75,
+        .duration = 72 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_ATTRACT] =
+    {
+        .tempo = 105,
+        .duration = 69 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_ATTRACT2] =
+    {
+        .tempo = 75,
+        .duration = 216 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_BARRIER] =
+    {
+        .tempo = 75,
+        .duration = 54 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_BATON_PASS] =
+    {
+        .tempo = -1,
+        .duration = 45 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_BELLY_DRUM] =
+    {
+        .tempo = 75,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_BITE] =
+    {
+        .tempo = 110,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_BLIZZARD] =
+    {
+        .tempo = 75,
+        .duration = 72 * 80,
+        .looping = TRUE,
+    },
+    [SE_M_BLIZZARD2] =
+    {
+        .tempo = 75,
+        .duration = 48 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_BONEMERANG] =
+    {
+        .tempo = 75,
+        .duration = 12 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_BRICK_BREAK] =
+    {
+        .tempo = 75,
+        .duration = 36 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_BUBBLE] =
+    {
+        .tempo = 110,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_BUBBLE2] =
+    {
+        .tempo = 110,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_BUBBLE3] =
+    {
+        .tempo = 110,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_BUBBLE_BEAM] =
+    {
+        .tempo = 75,
+        .duration = 78 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_BUBBLE_BEAM2] =
+    {
+        .tempo = 75,
+        .duration = 36 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_CHARGE] =
+    {
+        .tempo = 75,
+        .duration = 72 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_CHARM] =
+    {
+        .tempo = 75,
+        .duration = 18 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_CONFUSE_RAY] =
+    {
+        .tempo = 110,
+        .duration = 48 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_COSMIC_POWER] =
+    {
+        .tempo = 75,
+        .duration = 198 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_CRABHAMMER] =
+    {
+        .tempo = 75,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_DETECT] =
+    {
+        .tempo = 110,
+        .duration = 42 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_DIG] =
+    {
+        .tempo = 75,
+        .duration = 15 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_DIVE] =
+    {
+        .tempo = 75,
+        .duration = 48 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_DIZZY_PUNCH] =
+    {
+        .tempo = 75,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_DOUBLE_TEAM] =
+    {
+        .tempo = 75,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_DRAGON_RAGE] =
+    {
+        .tempo = 75,
+        .duration = 96 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_EARTHQUAKE] =
+    {
+        .tempo = 75,
+        .duration = 204 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_EMBER] =
+    {
+        .tempo = 75,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_ENCORE] =
+    {
+        .tempo = 75,
+        .duration = 12 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_ENCORE2] =
+    {
+        .tempo = 75,
+        .duration = 144 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_EXPLOSION] =
+    {
+        .tempo = 75,
+        .duration = 72 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_FAINT_ATTACK] =
+    {
+        .tempo = 75,
+        .duration = 30 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_FLAMETHROWER] =
+    {
+        .tempo = 75,
+        .duration = 192 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_FLAME_WHEEL] =
+    {
+        .tempo = 75,
+        .duration = 33 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_FLAME_WHEEL2] =
+    {
+        .tempo = 75,
+        .duration = 48 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_FLATTER] =
+    {
+        .tempo = 75,
+        .duration = 12 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_GIGA_DRAIN] =
+    {
+        .tempo = 75,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_GRASSWHISTLE] =
+    {
+        .tempo = 50,
+        .duration = 132 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_HAIL] =
+    {
+        .tempo = 75,
+        .duration = 30 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_HARDEN] =
+    {
+        .tempo = 75,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_HAZE] =
+    {
+        .tempo = 95,
+        .duration = 210 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_HEAL_BELL] =
+    {
+        .tempo = 75,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_HEAT_WAVE] =
+    {
+        .tempo = 75,
+        .duration = 132 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_HYDRO_PUMP] =
+    {
+        .tempo = 75,
+        .duration = 120 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_HYPER_BEAM] =
+    {
+        .tempo = 75,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_HYPER_BEAM2] =
+    {
+        .tempo = 75,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_ICY_WIND] =
+    {
+        .tempo = 75,
+        .duration = 12 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_LICK] =
+    {
+        .tempo = 75,
+        .duration = 36 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_LOCK_ON] =
+    {
+        .tempo = 75,
+        .duration = 18 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_METRONOME] =
+    {
+        .tempo = 75,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_MILK_DRINK] =
+    {
+        .tempo = 90,
+        .duration = 30 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_MINIMIZE] =
+    {
+        .tempo = 75,
+        .duration = 54 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_MIST] =
+    {
+        .tempo = 75,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_MOONLIGHT] =
+    {
+        .tempo = 75,
+        .duration = 288 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_MORNING_SUN] =
+    {
+        .tempo = 75,
+        .duration = 75 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_NIGHTMARE] =
+    {
+        .tempo = 110,
+        .duration = 96 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_PERISH_SONG] =
+    {
+        .tempo = 50,
+        .duration = 126 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_PETAL_DANCE] =
+    {
+        .tempo = 75,
+        .duration = 135 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_POISON_POWDER] =
+    {
+        .tempo = 75,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_PSYBEAM] =
+    {
+        .tempo = 95,
+        .duration = 42 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_PSYBEAM2] =
+    {
+        .tempo = 95,
+        .duration = 60 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_RAIN_DANCE] =
+    {
+        .tempo = 110,
+        .duration = 168 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_REFLECT] =
+    {
+        .tempo = 75,
+        .duration = 54 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_REVERSAL] =
+    {
+        .tempo = 75,
+        .duration = 66 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_ROCK_THROW] =
+    {
+        .tempo = 75,
+        .duration = 48 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_SACRED_FIRE] =
+    {
+        .tempo = 75,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_SACRED_FIRE2] =
+    {
+        .tempo = 75,
+        .duration = 96 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_SANDSTORM] =
+    {
+        .tempo = 100,
+        .duration = 192 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_SAND_TOMB] =
+    {
+        .tempo = 75,
+        .duration = 96 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_SCREECH] =
+    {
+        .tempo = 75,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_SELF_DESTRUCT] =
+    {
+        .tempo = 75,
+        .duration = 48 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_SING] =
+    {
+        .tempo = 50,
+        .duration = 174 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_SKETCH] =
+    {
+        .tempo = 90,
+        .duration = 12 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_SKY_UPPERCUT] =
+    {
+        .tempo = 110,
+        .duration = 36 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_SNORE] =
+    {
+        .tempo = 110,
+        .duration = 30 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_SOLAR_BEAM] =
+    {
+        .tempo = 75,
+        .duration = 192 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_SPIT_UP] =
+    {
+        .tempo = 75,
+        .duration = 15 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_STAT_DECREASE] =
+    {
+        .tempo = 85,
+        .duration = 78 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_STAT_INCREASE] =
+    {
+        .tempo = 85,
+        .duration = 78 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_STRENGTH] =
+    {
+        .tempo = 75,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_STRING_SHOT] =
+    {
+        .tempo = 125,
+        .duration = 48 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_STRING_SHOT2] =
+    {
+        .tempo = 125,
+        .duration = 96 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_SUPERSONIC] =
+    {
+        .tempo = 75,
+        .duration = 42 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_SURF] =
+    {
+        .tempo = 75,
+        .duration = 96 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_SWAGGER] =
+    {
+        .tempo = 95,
+        .duration = 18 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_SWAGGER2] =
+    {
+        .tempo = 75,
+        .duration = 12 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_SWEET_SCENT] =
+    {
+        .tempo = 75,
+        .duration = 168 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_SWIFT] =
+    {
+        .tempo = 90,
+        .duration = 18 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_TEETER_DANCE] =
+    {
+        .tempo = 85,
+        .duration = 60 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_TELEPORT] =
+    {
+        .tempo = 75,
+        .duration = 54 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_THUNDERBOLT] =
+    {
+        .tempo = 110,
+        .duration = 48 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_THUNDERBOLT2] =
+    {
+        .tempo = 110,
+        .duration = 48 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_THUNDER_WAVE] =
+    {
+        .tempo = 75,
+        .duration = 48 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_TOXIC] =
+    {
+        .tempo = 75,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_TRI_ATTACK] =
+    {
+        .tempo = 110,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_TRI_ATTACK2] =
+    {
+        .tempo = 110,
+        .duration = 96 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_TWISTER] =
+    {
+        .tempo = 75,
+        .duration = 168 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_UPROAR] =
+    {
+        .tempo = 75,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_VITAL_THROW] =
+    {
+        .tempo = 110,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_VITAL_THROW2] =
+    {
+        .tempo = 110,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_WATERFALL] =
+    {
+        .tempo = 75,
+        .duration = 60 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_WHIRLPOOL] =
+    {
+        .tempo = 75,
+        .duration = 120 * 80,
+        .looping = FALSE,
+    },
+    [SE_M_YAWN] =
+    {
+        .tempo = 75,
+        .duration = 48 * 80,
+        .looping = FALSE,
+    },
+    [SE_POKE_JUMP_FAILURE] =
+    {
+        .tempo = 120,
+        .duration = 33 * 80,
+        .looping = FALSE,
+    },
+    [SE_POKE_JUMP_SUCCESS] =
+    {
+        .tempo = 75,
+        .duration = 51 * 80,
+        .looping = FALSE,
+    },
+    [SE_SHOP] =
+    {
+        .tempo = 62,
+        .duration = 30 * 80,
+        .looping = FALSE,
+    },
+    [SE_SS_ANNE_HORN] =
+    {
+        .tempo = 82,
+        .duration = 240 * 80,
+        .looping = FALSE,
+    },
+    [SE_WALL_HIT] =
+    {
+        .tempo = 110,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+    [SE_WIN_OPEN] =
+    {
+        .tempo = 110,
+        .duration = 24 * 80,
+        .looping = FALSE,
+    },
+};
+
 #define WAIT_FRAMES 120
 
 void CB_PlayAllSongs(void)
@@ -222,21 +2319,44 @@ void CB_PlayAllSongs(void)
         }
         break;
     case WAIT_FRAMES:
+        gMain.accumulator = 0;
+        gMain.songPlayTime = 0;
         m4aSongNumStart(gMain.currentSong);
         ++gMain.state;
         break;
     case WAIT_FRAMES + 1:
-        if (mplayInfo->status & MUSICPLAYER_STATUS_PAUSE)
+        if (musicData[gMain.currentSong].looping)
         {
-            if (gMain.currentSong < MUS_TEACHY_TV_MENU)
+            gMain.songPlayTime += musicData[gMain.currentSong].tempo;
+            // do 16 audio ticks per 15 frames (64 audio ticks/s with 60 frames/s)
+            if (++gMain.accumulator == 15)
             {
-                ++gMain.currentSong;
-                gMain.state = 0;
+                gMain.accumulator = 0;
+                gMain.songPlayTime += musicData[gMain.currentSong].tempo;
+            }
+            // Wait 2 seconds after the song loops
+            if (gMain.songPlayTime < musicData[gMain.currentSong].duration + 2 * 64 * musicData[gMain.currentSong].tempo)
+            {
+                break;
             }
             else
             {
-                ++gMain.state;
+                m4aSongNumStop(gMain.currentSong);
             }
+        }
+        else if (!(mplayInfo->status & MUSICPLAYER_STATUS_PAUSE))
+        {
+            break;
+        }
+
+        if (gMain.currentSong < MUS_TEACHY_TV_MENU)
+        {
+            ++gMain.currentSong;
+            gMain.state = 0;
+        }
+        else
+        {
+            ++gMain.state;
         }
         break;
     }
