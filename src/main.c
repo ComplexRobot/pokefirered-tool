@@ -272,7 +272,7 @@ const struct
     [MUS_ENCOUNTER_BOY] =
     {
         .tempo = 77,
-        .duration = 576 * 80,
+        .duration = 960 * 80,
         .looping = TRUE,
     },
     [MUS_ENCOUNTER_DEOXYS] =
@@ -440,7 +440,7 @@ const struct
     [MUS_OAK] =
     {
         .tempo = 80,
-        .duration = 1632 * 80,
+        .duration = 2400 * 80,
         .looping = TRUE,
     },
     [MUS_OAK_LAB] =
@@ -482,7 +482,7 @@ const struct
     [MUS_PALLET] =
     {
         .tempo = 44,
-        .duration = 1536 * 80,
+        .duration = 3072 * 80,
         .looping = TRUE,
     },
     [MUS_PEWTER] =
@@ -518,7 +518,7 @@ const struct
     [MUS_POKE_MANSION] =
     {
         .tempo = 66,
-        .duration = 3456 * 80,
+        .duration = 6144 * 80,
         .looping = TRUE,
     },
     [MUS_POKE_TOWER] =
@@ -542,13 +542,13 @@ const struct
     [MUS_ROUTE1] =
     {
         .tempo = 58,
-        .duration = 1164 * 80,
+        .duration = 2316 * 80,
         .looping = TRUE,
     },
     [MUS_ROUTE11] =
     {
         .tempo = 62,
-        .duration = 1728 * 80,
+        .duration = 3264 * 80,
         .looping = TRUE,
     },
     [MUS_ROUTE24] =
@@ -638,7 +638,7 @@ const struct
     [MUS_SLOW_PALLET] =
     {
         .tempo = 36,
-        .duration = 1536 * 80,
+        .duration = 3072 * 80,
         .looping = TRUE,
     },
     [MUS_SS_ANNE] =
@@ -704,7 +704,7 @@ const struct
     [MUS_VICTORY_ROAD] =
     {
         .tempo = 68,
-        .duration = 1752 * 80,
+        .duration = 3288 * 80,
         .looping = TRUE,
     },
     [MUS_VICTORY_TRAINER] =
@@ -740,7 +740,7 @@ const struct
     [MUS_VS_GYM_LEADER] =
     {
         .tempo = 93,
-        .duration = 4224 * 80,
+        .duration = 8256 * 80,
         .looping = TRUE,
     },
     [MUS_VS_LEGEND] =
