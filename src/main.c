@@ -261,7 +261,7 @@ const struct
     },
     [MUS_ENCOUNTER_BOY] =
     {
-        .duration = 15.584415584415584 * 60 + 0.999,
+        .duration = 9.3506493506493502 * 60 + 0.999,
         .looping = TRUE,
     },
     [MUS_ENCOUNTER_DEOXYS] =
@@ -401,7 +401,7 @@ const struct
     },
     [MUS_OAK] =
     {
-        .duration = 37.5 * 60 + 0.999,
+        .duration = 25.5 * 60 + 0.999,
         .looping = TRUE,
     },
     [MUS_OAK_LAB] =
@@ -436,7 +436,7 @@ const struct
     },
     [MUS_PALLET] =
     {
-        .duration = 87.272727272727266 * 60 + 0.999,
+        .duration = 43.636363636363633 * 60 + 0.999,
         .looping = TRUE,
     },
     [MUS_PEWTER] =
@@ -466,7 +466,7 @@ const struct
     },
     [MUS_POKE_MANSION] =
     {
-        .duration = 116.36363636363636 * 60 + 0.999,
+        .duration = 65.454545454545453 * 60 + 0.999,
         .looping = TRUE,
     },
     [MUS_POKE_TOWER] =
@@ -491,7 +491,7 @@ const struct
     },
     [MUS_ROUTE11] =
     {
-        .duration = 65.806451612903217 * 60 + 0.999,
+        .duration = 34.838709677419352 * 60 + 0.999,
         .looping = TRUE,
     },
     [MUS_ROUTE24] =
@@ -566,7 +566,7 @@ const struct
     },
     [MUS_SLOW_PALLET] =
     {
-        .duration = 106.66666666666667 * 60 + 0.999,
+        .duration = 53.333333333333336 * 60 + 0.999,
         .looping = TRUE,
     },
     [MUS_SS_ANNE] =
@@ -621,7 +621,7 @@ const struct
     },
     [MUS_VICTORY_ROAD] =
     {
-        .duration = 60.441176470588232 * 60 + 0.999,
+        .duration = 32.205882352941174 * 60 + 0.999,
         .looping = TRUE,
     },
     [MUS_VICTORY_TRAINER] =
@@ -651,7 +651,7 @@ const struct
     },
     [MUS_VS_GYM_LEADER] =
     {
-        .duration = 110.96774193548387 * 60 + 0.999,
+        .duration = 56.774193548387096 * 60 + 0.999,
         .looping = TRUE,
     },
     [MUS_VS_LEGEND] =
